@@ -6,9 +6,9 @@ export default class App extends React.Component{
   render(){
   return (
     <div className="App">
-      <p>Seu componente aqui</p>
-      <p>Seu componente aqui</p>
-      <p>Seu componente aqui</p>
+      <p>Componente Elias</p>
+      <p>Componente Bray</p>
+      <p>Componente Rommel</p>
     </div>
   );
 }
