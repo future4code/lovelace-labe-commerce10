@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Ecommerce } from './App.style';
+//imports components
+import Nav from './components/ecommerceNav/ecommerceNav'
+import Principal from './components/ecommercePrincipal/ecommercePrincipal'
 
-
-export default class App extends React.Component{
-  render(){
+function App() {
   return (
-    <div className="App">
-      <p>Componente Elias</p>
-      <p>Componente Bray</p>
-      <p>Componente Rommel</p>
-    </div>
+    <Ecommerce className="Main">
+       <Nav/>
+       <Principal/>
+    </Ecommerce>
   );
 }
-}
 
-
+export default App;
