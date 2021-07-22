@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import Filtros from "./../ecommerceFiltros/ecommerceFiltros"
-import Produtos from "./../ecommerceProdutos/ecommerceProdutos"
-import Carrinho from "./../ecommerceCarrinho/ecommerceCarrinho"
+import Filtros from "../EcommerceFiltros/EcommerceFiltros"
+import Produtos from "../EcommerceProdutos/EcommerceProdutos"
+import Carrinho from "../EcommerceCarrinho/EcommerceCarrinho"
+import { BoxPrincipal } from './Ecommerce.stylePrincipal'
 
-export default class ecommercePrincipal extends Component {
+export default class EcommercePrincipal extends Component {
     render() {
         return (
-            <ecommercePrincipal>
+            <BoxPrincipal>
                 <Filtros/>
-                {/* <Produtos/>
-                <Carrinho/>                 */}
-            </ecommercePrincipal>
+                <Produtos/>
+                <Carrinho/>                 
+            </BoxPrincipal>
         )
     }
 }
