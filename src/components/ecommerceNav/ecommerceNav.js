@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from "./../../img/logo.jpg";
-import { NavBar } from './ecommerce.styleNav';
+import { NavBar } from './Ecommerce.styleNav';
 
-export default class ecommerceNav extends Component {
+export default class EcommerceNav extends Component {
     render() {
         return (
             <NavBar className="nav">
