@@ -4,19 +4,24 @@ import { BoxFiltro } from './Ecommerce.styleFiltros'
 export default class EcommerceFiltros extends Component {
     
   state = {
-    valorMinimo : '',
-    valorMaximo : '',
-    buscaNome : ''
+    minFilter : '',
+    maxFilter : '',
+    nameFilter : ''
   }
 
-  onChangeMinimo = (event) => {
-    this.setState({valorMinimo : event.target.value})
+  onChangeMinFilter = (event) => {
+    console.log("Entrou minimo")
+    this.setState({minFilter: event.target.value})
   }
-  onChangeMaximo = (event) => {
-    this.setState({valorMaximo : event.target.value})
+
+  onChangeMaxFilter = (event) => {
+    console.log("Entrou maximo")
+    this.setState({maxFilter: event.target.value})
   }
-  onChangeNome = (event) => {
-    this.setState({buscaNome : event.target.value})
+
+  onChangeNameFilter = (event) => {
+    console.log("Entrou name")
+    this.setState({nameFilter: event.target.value})
   }
   
   render() {
@@ -28,22 +33,32 @@ export default class EcommerceFiltros extends Component {
             <h2>Filtros</h2>
           <div>
             <label>Valor mínimo:</label>
-            <input type="number" onChange={this.onChangeMinimo} value={this.state.valorMinimo}></input>
+            <input type="number" 
+                   value={this.props.minFilter}
+                   onChange={this.props.onChangeMinFilter}
+            />
+          
           </div>
 
           <div>
             <label>Valor máximo:</label>
-            <input type="number" onChange={this.onChangeMaximo} value={this.state.valorMaximo} ></input>
+            <input type="number" 
+                   value={this.props.maxFilter}
+                   onChange={this.props.onChangeMaxFilter} 
+            />
+
           </div>
 
           <div>
             <label>Busca por nome:</label>
-            <input type="text" onChange={this.onChangeNome} value={this.state.buscaNome}></input>
+            <input type="text" 
+                   value={this.props.nameFilter}
+                   onChange={this.props.onChangeNameFilter}
+          
+           />
           </div>
 
-        </div>
-        <p>{this.state.valorMaximo}</p>
-             
+        </div>             
         </BoxFiltro>
         
         );
