@@ -5,7 +5,7 @@ export default class EcommerceCarrinho extends Component {
         return (
             <div>
                 <h1>Carrinho</h1>
-                <div>Valor Total</div>
+                <div>Valor Total :</div>
             </div>
         )
     }
