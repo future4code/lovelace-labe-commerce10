@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BoxProduto } from './Ecommerce.styleProdutos'
+import { BoxProduto, Header } from './Ecommerce.styleProdutos'
 import  EcommerceCard from './EcommerceCard'
 
 import Labalienave from './../../img/camiseta-Labalienave.jpg'
@@ -18,10 +18,12 @@ import Labplanets from './../../img/Camiseta-Labplanets.jpg'
 
 
 
+
 export default class EcommerceProdutos extends Component {
 
     state = {
         
+        sort: 'DESCRESCENTE',
         valorMinimo: "",
         valorMaximo: "",
         filtroNome: "",
@@ -30,7 +32,7 @@ export default class EcommerceProdutos extends Component {
                       
             id: Date.now (),
             nome: 'Camiseta Labalienave',
-            valor: 45.0,
+            valor: 45,
             quantidade : 0,
             imagem: Labalienave
             },
@@ -38,7 +40,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Labaliencoke',
-            valor: 45.0,
+            valor: 45,
             quantidade : 0,
             imagem: Labaliencoke
     
@@ -48,7 +50,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Labalienhype',
-            valor: 45.0,
+            valor: 45,
             quantidade : 0,
             imagem: Labalienhype
     
@@ -58,7 +60,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Labaturno',
-            valor: 45.0,
+            valor: 45,
             quantidade : 0,
             imagem: Labaturno
     
@@ -68,7 +70,7 @@ export default class EcommerceProdutos extends Component {
                 
             id: Date.now (),
             nome: 'Camiseta Labduza',
-            valor: 55.0,
+            valor: 55,
             quantidade : 0,
             imagem: Labduza
     
@@ -78,7 +80,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Labeteoro',
-            valor: 55.0,
+            valor: 55,
             quantidade : 0,
             imagem: labeteoro
     
@@ -88,7 +90,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Labistemasolar',
-            valor: 65.0,
+            valor: 65,
             quantidade : 0,
             imagem: Labistemasolar
     
@@ -98,7 +100,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Lablactea',
-            valor: 65.0,
+            valor: 65,
             quantidade : 0,
             imagem: Lablactea
     
@@ -109,7 +111,7 @@ export default class EcommerceProdutos extends Component {
             
             id: Date.now (),
             nome: 'Camiseta Labnasa',
-            valor: 75.0,
+            valor: 75,
             quantidade : 0,
             imagem: Labnasa
     
@@ -119,7 +121,7 @@ export default class EcommerceProdutos extends Component {
                 
             id: Date.now (),
             nome: 'Camiseta Labnasa',
-            valor: 75.0,
+            valor: 75,
             quantidade : 0,
             imagem: Labnave
     
@@ -129,7 +131,7 @@ export default class EcommerceProdutos extends Component {
                 
             id: Date.now (),
             nome: 'Camiseta Labplanets',
-            valor: 75.0,
+            valor: 75,
             quantidade : 0,
             imagem: Labplanets
     
@@ -139,7 +141,7 @@ export default class EcommerceProdutos extends Component {
                 
             id: Date.now (),
             nome: 'Camiseta Labtrioalien',
-            valor: 35.0,
+            valor: 35,
             quantidade : 0,
             imagem: Labtrioalien
     
@@ -149,37 +151,71 @@ export default class EcommerceProdutos extends Component {
                 
             id: Date.now (),
             nome: 'Camiseta Pacplanets',
-            valor: 55.0,
+            valor: 55,
             quantidade : 0,
             imagem: pacplanets
     
             }]
         }
         
+ 
+
 
         componentDidUpdate(){
             localStorage.setItem('carrinho', JSON.stringify(this.state.produtos))
+        }
+
+        
+        sortProductsAndFilter(){
+            return this.state.produtos
+            .sort((a,b) => this.state.sort === 'CRESCENTE' ? a.valor - b.valor : b.valor - a.valor)
+            .filter((produto) => this.props.maxFilter ? produto.valor < this.props.maxFilter : true)
+            .filter((produto) => this.props.minFilter ? produto.valor > this.props.minFilter : true)
+            .filter((produto) => this.props.nameFilter ? produto.nome.includes(this.props.nameFilter) : true)
+        }
+
+        onChangeSort = (event) => {
+            this.setState({sort: event.target.value})
           }
 
 
-    render() {
+
+    render() {     
+        
+        const filteredAndOrderedList = this.sortProductsAndFilter()
 
         const listaDeProdutos = this.state.produtos.map((produto,index) =>{
-            return (
+            return (                
                 <EcommerceCard key={index}
                          imagem={produto.imagem}
                          name={produto.nome}
-                         value= {produto.valor}        
+                         value={produto.valor}        
                />
             )
+        })     
 
-        })
 
+        return (      
+            <div>            
+            <Header>
+                Quantidade de produtos : {filteredAndOrderedList.length}
+               
+                <label>               
+                Ordenação:
+                    <select value={this.state.sort} onChange={this.onChangeSort}>
+                        <option value={'CRESCENTE'}>Crescente</option>
+                        <option value={'DESCRESCENTE'}>Decrescente</option>
+                    </select>
 
-        return (
-            <BoxProduto>             
-                {listaDeProdutos}  
+                </label>
+
+            </Header>
+
+            <BoxProduto>
+                {listaDeProdutos}
             </BoxProduto>
+
+            </div>
         )
     }
 }

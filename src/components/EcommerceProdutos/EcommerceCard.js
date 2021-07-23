@@ -34,6 +34,7 @@ const Button = styled.button``
 
 export default class EcommerceCard extends Component {
     render() {
+      
       console.log("props",this.props)
         return (
             <ProductCard key={this.props.id}>
@@ -47,3 +48,4 @@ export default class EcommerceCard extends Component {
         )
     }
 }
+
