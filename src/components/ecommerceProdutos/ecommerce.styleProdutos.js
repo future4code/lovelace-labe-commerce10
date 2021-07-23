@@ -6,9 +6,14 @@ export const BoxProduto = styled.div`
   row-gap: 20px;
   column-gap: 20px;
   margin:20px;
-  padding: 20px 40px;
-  max-width: 63%;
+  padding: 20px 40px; 
   border-right: 1px solid #ebe7fb;
+  max-height: calc(130vh - calc(100vh / 2));
+  overflow: auto;
+  
+  
+
+
 
 
 `
