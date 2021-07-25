@@ -34,15 +34,15 @@ const Button = styled.button``
 
 export default class EcommerceCard extends Component {
     render() {
-      
-      console.log("props",this.props)
+        const product = this.props.product
+      // console.log("props",this.props)
         return (
-            <ProductCard key={this.props.id}>
+            <ProductCard key={product.id}>
             <Card>
-              <Picture src={this.props.imagem}/>
-              <Name>{this.props.name}</Name>
-              <Price>R$ {this.props.value}</Price>
-              <Button>Adicionar ao Carrinho</Button>
+              <Picture src={product.imagem}/>
+              <Name>{product.nome}</Name>
+              <Price>R$ {product.valor},00</Price>
+              <Button onClick={() => this.props.onAddProductToCart(product.id)}>Adicionar ao Carrinho</Button>
             </Card>
           </ProductCard>
         )
