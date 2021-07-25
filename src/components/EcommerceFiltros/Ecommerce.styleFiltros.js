@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const BoxFiltro = styled.div`
-    margin-top: 50px;
+    
+    margin-top: 5px;
     display: flex;  
     flex-direction: column;
     border-right: 1px solid #ebe7fb;
-    padding: 0 40px 0 0px;
+    padding: 0 20px 0 50px;
     overflow: auto;
   
 
